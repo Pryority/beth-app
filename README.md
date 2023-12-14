@@ -1,15 +1,26 @@
-# Elysia with Bun runtime
+# BETH App
 
-## Getting Started
-To get started with this template, simply paste this command into your terminal:
-```bash
-bun create elysia ./elysia-example
-```
+Hypermedia-driven architecture for building web apps inspired by [Ethan Niser](https://github.com/ethanniser).
 
-## Development
+## Built with the BETH Stack
+
+  🥟   B - Runtime: bun \
+  🦊   E - Server: elysia \
+  🐬   T - Database: turso (sqlite) \
+  🐴   H - HTML: htmx
+
+![Demo Image](./public/demo.jpeg)
+
+### Development
+
 To start the development server run:
+
 ```bash
-bun run dev
+bun dev
 ```
 
-Open http://localhost:3000/ with your browser to see the result.
+Open <http://localhost:3000/> with your browser to see the frontend.
+
+### TODO
+
+Lots and lots ...
