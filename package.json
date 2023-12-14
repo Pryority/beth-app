@@ -1,15 +1,33 @@
 {
   "name": "beth-ai",
-  "version": "1.0.50",
+  "version": "0.0.0",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
+    "@elysiajs/html": "^0.7.3",
+    "@libsql/client": "^0.4.0-pre.5",
+    "drizzle-kit": "^0.20.6",
+    "drizzle-orm": "^0.29.1",
     "elysia": "latest"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "@flydotio/dockerfile": "latest",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "bun-types": "latest",
+    "eslint": "^8.55.0",
+    "eslint-config-standard-with-typescript": "^42.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-n": "^16.4.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "prettier": "^3.1.1",
+    "typescript": "^5.3.3"
   },
-  "module": "src/index.js"
+  "module": "src/index.ts",
+  "type": "module",
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
 }
