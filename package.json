@@ -1,13 +1,17 @@
 {
-  "name": "beth-ai",
+  "name": "beth-app",
   "version": "0.0.0",
+  "license": "MIT",
   "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts"
   },
   "dependencies": {
+    "@elysiajs/cookie": "^0.7.0",
     "@elysiajs/html": "^0.7.3",
+    "@elysiajs/jwt": "^0.7.0",
+    "@elysiajs/static": "^0.7.1",
     "@libsql/client": "^0.4.0-pre.5",
     "drizzle-kit": "^0.20.6",
     "drizzle-orm": "^0.29.1",

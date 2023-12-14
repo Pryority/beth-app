@@ -1,0 +1,36 @@
+<!-- REGISTRATION MODAL -->
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #open-registration-modal {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  #open-registration-modal[open] {
+    animation: fadeIn 0.3s ease-in-out;
+    opacity: 1;
+  }
+</style>
+
+<dialog open id="open-registration-modal">
+  <article style="width: 66vw">
+    <header>
+      <a
+        aria-label="Close"
+        style="cursor: pointer"
+        class="close"
+        _="on click remove #open-registration-modal transition my opacity to 0"
+      ></a>
+      REGISTRATION ERROR
+    </header>
+  </article>
+</dialog>

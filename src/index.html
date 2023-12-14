@@ -1,3 +1,58 @@
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 50%;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  body.container {
+    animation: fadeIn 0.09s ease-in-out;
+    opacity: 1;
+  }
+  .stack-card {
+    margin: 8px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: -1;
+  }
+
+  .stack-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(18, 25, 31, 0.9);
+    z-index: -1;
+  }
+
+  .stack-card p {
+    z-index: 5;
+    font-size: xx-large;
+    color: cadetblue;
+    letter-spacing: -2px;
+  }
+
+  #bun {
+    background-image: url("public/bun-logo.svg");
+  }
+  #elysia {
+    background-image: url("public/elysia-logo.svg");
+  }
+  #turso {
+    background-image: url("public/turso-logo.png");
+  }
+  #htmx {
+    background-image: url("public/htmx-logo.svg");
+  }
+</style>
+
 <!doctype html>
 <html>
   <head>
@@ -17,93 +72,55 @@
   <body class="container">
     <nav>
       <ul>
-        <li><strong>Baby Guess 🐣</strong></li>
+        <li><strong>BETH App</strong></li>
       </ul>
-      <!-- <ul>
-        <li><a href="#">Groups</a></li>
-        <li><a href="#" role="button">Login</a></li>
-      </ul> -->
+      <ul>
+        <!-- <li><a href="/profile">Profile</a></li> -->
+        <li><a href="/login" role="button">Login</a></li>
+      </ul>
     </nav>
     <main class="container">
-      <form
-        hx-post="/guess"
-        hx-target="#guess-table"
-        _="on htmx:afterRequest reset() me"
-      >
-        <div class="grid">
-          <label for="name">
-            Name
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Name"
-              required
-            />
-          </label>
-
-          <label for="weight">
-            Weight
-            <input
-              type="number"
-              id="weight"
-              name="weight"
-              placeholder="Weight (lbs)"
-              step="0.01"
-              required
-            />
-          </label>
-        </div>
-
-        <div class="grid">
-          <label for="length">
-            Length
-            <input
-              type="number"
-              id="length"
-              name="length"
-              placeholder="Length (cm)"
-              step="0.01"
-              required
-            />
-          </label>
-
-          <div>
-            <label for="bald">
-              Born with hair?
-              <select id="bald" name="bald" required>
-                <option value="false">Hair</option>
-                <option value="true">Bald</option>
-              </select>
-            </label>
+      <h1 style="margin-bottom: 0">A WIP Template for the BETH stack</h1>
+      <h3>
+        Inspired by <a href="https://github.com/ethanniser">Ethan Niser</a>
+      </h3>
+      <section class="grid">
+        <ul>
+          <div class="grid" style="grid-column-gap: 0">
+            <article id="bun" class="stack-card">
+              <p><strong>B</strong>un</p>
+            </article>
+            <article id="elysia" class="stack-card">
+              <p><strong>E</strong>lysia</p>
+            </article>
+            <article id="turso" class="stack-card">
+              <p><strong>T</strong>urso</p>
+            </article>
+            <article id="htmx" class="stack-card">
+              <p><strong>H</strong>TMX</p>
+            </article>
           </div>
-        </div>
-
-        <!-- Button -->
-        <div class="container" style="width: 66%">
-          <button type="submit" style="justify-content: center; display: flex">
-            Add Guess
-          </button>
-        </div>
-      </form>
-      <h2>Guesses</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Weight (lbs)</th>
-            <th>Length (inches)</th>
-            <th>Bald</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody
-          id="guess-table"
-          hx-get="/guess/table"
-          hx-trigger="load"
-          hx-swap="innerHTML"
-        ></tbody>
-      </table>
+        </ul>
+      </section>
+      <div
+        class="container"
+        style="
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          margin-top: 40px;
+        "
+      >
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/cpzowDDJj24?si=R3YyF2-70jy4I5Qg"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
     </main>
   </body>
 </html>

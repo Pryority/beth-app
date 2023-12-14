@@ -1,6 +1,7 @@
 // src/controllers/guessController.ts
 import { addGuess, getGuesses } from "../db";
 import { type GuessRequestBody, type Guess, GuessBody } from "../types/guess";
+import { UserRequestBody } from "../types/user";
 
 export const handleAddGuess = async ({
   body,
@@ -23,14 +24,54 @@ const convertToProperTypes = (body: GuessRequestBody): Guess => {
   };
 };
 
-export const handleGetGuesses = async (): Promise<Guess[]> => {
-  return await getGuesses();
-};
+export const REGISTRATION_ERROR = async () =>
+  await Bun.file("./src/views/register/registration-modal.html").text();
 
-export const renderedGuessTable = async (): Promise<string> => {
-  const guesses = await getGuesses();
-  const tableHTML = generateGuessTableHTML(guesses);
-  return tableHTML;
+export const renderedProfile = async (
+  body: UserRequestBody
+): Promise<string> => {
+  const { name } = body;
+
+  return `
+  <!doctype html>
+  <html>
+    <head>
+      <title>${name} Profile</title>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+      />
+      <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+      <script
+        src="https://unpkg.com/htmx.org@1.9.9"
+        integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
+        crossorigin="anonymous"
+      ></script>
+    </head>
+
+    <body class="container">
+      <nav>
+        <ul>
+          <li style="text-transform: capitalize;"><strong>${name}'s Profile</strong></li>
+        </ul>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#" role="button">Button</a></li>
+        </ul>
+      </nav>
+      <main class="container">
+        <article>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis,
+            nam ipsa quisquam blanditiis eligendi esse iste odio possimus
+            obcaecati facere.
+          </p>
+        </article>
+      </main>
+    </body>
+  </html>
+  `;
 };
 
 export const newRenderedGuessTable = async (

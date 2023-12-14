@@ -1,0 +1,96 @@
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 50%;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  body.container {
+    animation: fadeIn 0.09s ease-in-out;
+    opacity: 1;
+  }
+</style>
+
+<!doctype html>
+<html>
+  <head>
+    <title>Unauthorized</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css"
+    />
+    <script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+    <script
+      src="https://unpkg.com/htmx.org@1.9.9"
+      integrity="sha384-QFjmbokDn2DjBjq+fM+8LUIVrAgqcNW2s0PjAxHETgRn9l4fvX31ZxDxvwQnyMOX"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body class="container">
+    <nav>
+      <ul>
+        <li><strong>BETH App</strong></li>
+      </ul>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/login" disabled role="button">Login</a></li>
+      </ul>
+    </nav>
+    <main
+      class="grid"
+      style="justify-items: center; align-items: center; padding-top: 0"
+    >
+      <!-- LOGIN FORM -->
+      <article style="width: 100%; margin-bottom: -32px">
+        <header>
+          <a href="#close" aria-label="Close" class="close"></a>
+          Welcome back! 👋
+        </header>
+        <form id="loginForm" action="/login" method="post">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+
+          <button type="submit">Login</button>
+        </form>
+        <div style="display: flex; gap: 16px">
+          <p>Need an account?</p>
+          <button
+            type="button"
+            hx-get="/register/modal"
+            hx-target="#registration-modal"
+            hx-trigger="click"
+            data-bs-toggle="modal"
+            data-bs-target="#registration-modal"
+            class="secondary"
+            style="
+              margin: 0px;
+              padding: 0;
+              width: fit-content;
+              padding: 0px 20px;
+              height: 40px;
+            "
+          >
+            Register
+          </button>
+        </div>
+      </article>
+      <img
+        src="/public/register.jpg"
+        alt="Demo"
+        style="object-fit: contain; max-height: 448px"
+      />
+    </main>
+    <section
+      id="registration-modal"
+      hx-swap="outerHTML"
+      style="height: 0px; margin: 0"
+    ></section>
+  </body>
+</html>
